@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en" id="page">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Group Service LLP — Industrial Specialists, Kazakhstan</title>
+<meta name="description" content="WGS provides industrial coating, thermal insulation, PFP/CFP, scaffolding, QC and security systems in Kazakhstan's oil & gas sector.">
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap');</style>
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --navy:    #0C1A3A;
+  --navy2:   #142248;
+  --navy3:   #1C2E5A;
+  --gold:    #C8870A;
+  --gold2:   #E8A020;
+  --white:   #FFFFFF;
+  --off:     #F1F4FB;
+  --off2:    #E8EDF8;
+  --text:    #111827;
+  --text2:   #374151;
+  --muted:   #6B7280;
+  --line:    #D8E0F0;
+  --line2:   #C0CCEA;
+
+  --f-display: 'Inter', sans-serif;
+  --f-body:    'DM Sans', sans-serif;
+
+  --ease: cubic-bezier(.22,.68,0,1.2);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--f-body);
+  background: var(--off);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+
+/* ═══════════════════════════════════════════════════════════════
+   LANGUAGE SWITCH
+═══════════════════════════════════════════════════════════════ */
+/* Language switching: JS sets innerHTML from data-en / data-ru attributes */
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT PRIMITIVES
+═══════════════════════════════════════════════════════════════ */
+.wrap {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 6vw, 96px);
+  padding-right: clamp(20px, 6vw, 96px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════════ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  height: 64px;
+  display: flex; align-items: center;
+  background: rgba(241,244,251,0.88);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+#nav.solid {
+  background: rgba(241,244,251,0.97);
+  border-bottom-color: var(--line);
+}
+
+#nav .wrap {
+  display: flex; align-items: center;
+  gap: 0;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 11px;
+  flex-shrink: 0; margin-right: auto;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--navy);
+  border-radius: 6px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+  padding: 8px;
+}
+.nav-logo-mark span {
+  border-radius: 1px;
+  background: #fff;
+  opacity: 0.9;
+}
+.nav-logo-mark span:nth-child(2),
+.nav-logo-mark span:nth-child(3) {
+  background: var(--gold2); opacity: 0.7;
+}
+.nav-logo-text { font-family: var(--f-display); font-weight: 800; font-size: 15px; letter-spacing: -0.01em; color: var(--navy); }
+.nav-logo-sub  { font-size: 9px; letter-spacing: 0.12em; color: var(--muted); margin-top: 1px; text-transform: uppercase; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 2px;
+  margin-right: 24px;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text2);
+  padding: 6px 14px; border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--navy); background: var(--off2); }
+
+.nav-right { display: flex; align-items: center; gap: 10px; }
+
+.lang-sw {
+  display: flex; border: 1px solid var(--line2); border-radius: 5px; overflow: hidden;
+}
+.lang-sw button {
+  font-family: var(--f-display); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; padding: 5px 11px; color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.lang-sw button.on { background: var(--navy); color: #fff; }
+
+.nav-cta {
+  font-family: var(--f-display); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.03em; padding: 8px 18px; border-radius: 5px;
+  background: var(--gold); color: #fff;
+  transition: background 0.15s, transform 0.15s;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
+
+/* hamburger */
+.nav-burger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+.nav-burger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.2s; }
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none; position: fixed; inset: 64px 0 0 0; z-index: 490;
+  background: var(--off); border-top: 1px solid var(--line);
+  padding: 32px clamp(20px,6vw,96px);
+  flex-direction: column; gap: 4px;
+}
+.nav-mobile a {
+  font-size: 18px; font-weight: 600; color: var(--navy);
+  padding: 12px 0; border-bottom: 1px solid var(--line);
+  display: block;
+}
+.nav-mobile-foot { display: flex; gap: 12px; margin-top: 24px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════════ */
+#hero {
+  min-height: 100svh;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  padding-top: 64px;
+}
+
+/* Precision grid lines — not decorative, encode the industrial grid */
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Gold horizontal rule at top — like a measurement marker */
+.hero-ruler {
+  position: absolute; top: 64px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 15%, transparent 50%);
+  opacity: 0.6;
+}
+
+.hero-body {
+  flex: 1;
+  display: flex; align-items: center;
+  padding: 72px 0 96px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-display); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold2); margin-bottom: 28px;
+}
+.hero-tag-line { width: 28px; height: 1px; background: var(--gold2); }
+
+.hero-h1 {
+  font-family: var(--f-display);
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: #fff;
+  margin-bottom: 28px;
+}
+.hero-h1 em {
+  font-style: normal;
+  color: var(--gold2);
+}
+
+.hero-desc {
+  font-size: clamp(14px,1.5vw,16px);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 44px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; }
+
+.btn {
+  font-family: var(--f-display); font-weight: 700; font-size: 12.5px;
+  letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border-radius: 5px;
+  transition: all 0.18s;
+}
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,135,10,0.35); }
+.btn-outline-white {
+  background: transparent; color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.5); color: #fff; transform: translateY(-2px); }
+
+.btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Hero certs strip */
+.hero-certs {
+  display: flex; align-items: center; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
+}
+.hero-cert {
+  padding: 0 20px 0 0;
+  margin-right: 20px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.hero-cert:last-child { border-right: none; }
+.hero-cert-name {
+  font-family: var(--f-display); font-weight: 800; font-size: 13px;
+  color: var(--gold2); letter-spacing: 0.04em;
+}
+.hero-cert-desc { font-size: 10px; color: rgba(255,255,255,0.32); margin-top: 2px; letter-spacing: 0.04em; }
+
+/* Hero right: data panel */
+.hero-panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.hero-panel-head {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-panel-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero-stat {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+}
+.hero-stat:last-child { border-bottom: none; }
+.hero-stat-label {
+  font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.4;
+  max-width: 160px;
+}
+.hero-stat-val {
+  font-family: var(--f-display); font-weight: 900; font-size: 2.2rem;
+  color: #fff; letter-spacing: -0.04em; line-height: 1;
+  flex-shrink: 0;
+}
+.hero-stat-val sup { font-size: 1rem; color: var(--gold2); font-weight: 700; }
+
+/* Light wedge — hero bottom */
+#hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: var(--off);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION SCAFFOLD
+═══════════════════════════════════════════════════════════════ */
+.sec { padding: clamp(72px,9vw,120px) 0; }
+.sec + .sec { border-top: 1px solid var(--line); }
+
+.sec-eyebrow {
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px;
+}
+.sec-title {
+  font-family: var(--f-display); font-size: clamp(1.9rem,3vw,2.7rem);
+  font-weight: 900; letter-spacing: -0.03em; line-height: 1.08;
+  color: var(--navy); margin-bottom: 16px;
+}
+.sec-lead {
+  font-size: clamp(14px,1.5vw,16px); color: var(--muted);
+  line-height: 1.8; max-width: 560px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════════════════════ */
+#about { background: var(--white); }
+
+.about-grid {
+  display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start;
+}
+
+.about-body p {
+  font-size: 15px; color: var(--text2); line-height: 1.85; margin-bottom: 18px;
+}
+.about-body p:last-child { margin-bottom: 0; }
+
+.about-divider { width: 40px; height: 2px; background: var(--gold); margin: 32px 0; }
+
+.about-pillars { display: flex; flex-direction: column; gap: 0; }
+.pillar {
+  display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pillar:first-child { border-top: 1px solid var(--line); }
+.pillar-num {
+  font-family: var(--f-display); font-size: 11px; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.08em; padding-top: 3px;
+}
+.pillar-title {
+  font-family: var(--f-display); font-weight: 700; font-size: 14px;
+  color: var(--navy); margin-bottom: 5px;
+}
+.pillar-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* Cert cards */
+.cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
+.cert-card {
+  background: var(--navy);
+  border-radius: 6px; padding: 22px 20px;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s var(--ease);
+}
+.cert-card:hover { transform: translateY(-4px); }
+.cert-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold);
+}
+.cert-badge {
+  font-family: var(--f-display); font-size: 1.25rem; font-weight: 900;
+  color: var(--gold2); letter-spacing: -0.01em; margin-bottom: 6px;
+}
+.cert-text { font-size: 11.5px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════════════════════════ */
+#services { background: var(--off); }
+
+.srv-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 40px; flex-wrap: wrap; }
+
+.srv-tabs {
+  display: flex; gap: 0;
+  border: 1px solid var(--line2); border-radius: 6px; overflow: hidden;
+  flex-shrink: 0;
+}
+.srv-tab {
+  font-family: var(--f-display); font-size: 12px; font-weight: 600;
+  padding: 9px 20px; color: var(--muted); background: var(--white);
+  transition: all 0.15s; white-space: nowrap;
+  border-right: 1px solid var(--line2);
+}
+.srv-tab:last-child { border-right: none; }
+.srv-tab.on { background: var(--navy); color: #fff; }
+.srv-tab:not(.on):hover { background: var(--off2); color: var(--navy); }
+
+/* Industrial grid */
+.srv-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+}
+.srv-card {
+  background: var(--white); padding: 32px 28px;
+  position: relative; overflow: hidden;
+  transition: background 0.2s;
+}
+.srv-card:hover { background: var(--off); }
+.srv-card::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0; top: 0; width: 0;
+  background: var(--gold);
+  transition: width 0.25s var(--ease);
+}
+.srv-card:hover::after { width: 3px; }
+
+.srv-icon-wrap {
+  width: 44px; height: 44px; border-radius: 5px;
+  border: 1px solid var(--line2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; background: var(--off);
+  transition: border-color 0.2s, background 0.2s;
+}
+.srv-card:hover .srv-icon-wrap { border-color: var(--gold); background: rgba(200,135,10,0.06); }
+.srv-icon-wrap svg { width: 20px; height: 20px; color: var(--navy); }
+.srv-card:hover .srv-icon-wrap svg { color: var(--gold); }
+
+.srv-name {
+  font-family: var(--f-display); font-weight: 700; font-size: 14px;
+  color: var(--navy); line-height: 1.3; margin-bottom: 10px;
+}
+.srv-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* Security panel */
+.sec-panel { display: none; }
+.sec-panel.on { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+
+.sec-card {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 6px; overflow: hidden;
+}
+.sec-card-top {
+  background: var(--navy); padding: 24px 26px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.sec-card-icon-bg {
+  width: 40px; height: 40px; border-radius: 5px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sec-card-icon-bg svg { width: 20px; height: 20px; color: var(--gold2); }
+.sec-card-title {
+  font-family: var(--f-display); font-weight: 800; font-size: 14px;
+  color: #fff; line-height: 1.3; margin-bottom: 4px;
+}
+.sec-card-sub { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.sec-card-body { padding: 22px 26px; }
+.sec-list { display: flex; flex-direction: column; gap: 8px; }
+.sec-list li {
+  font-size: 13px; color: var(--text2); line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.sec-list li::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0; margin-top: 7px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROJECTS
+═══════════════════════════════════════════════════════════════ */
+#projects { background: var(--navy); }
+#projects .sec-eyebrow { color: rgba(232,160,32,0.8); }
+#projects .sec-title { color: #fff; }
+#projects .sec-lead { color: rgba(255,255,255,0.4); }
+
+.proj-header-row {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 48px; flex-wrap: wrap;
+}
+
+/* Table layout — more industrial, less card-y */
+.proj-table { width: 100%; border-collapse: collapse; }
+.proj-table thead tr {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.proj-table thead th {
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); padding: 0 0 14px;
+  text-align: left;
+}
+.proj-table thead th:first-child { padding-left: 0; }
+.proj-table thead th:last-child { text-align: right; }
+
+.proj-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.15s;
+  cursor: default;
+}
+.proj-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.proj-table tbody tr:last-child { border-bottom: none; }
+
+.proj-table td {
+  padding: 22px 16px 22px 0;
+  vertical-align: top;
+}
+.proj-table td:first-child { padding-left: 0; }
+.proj-table td:last-child { padding-right: 0; text-align: right; }
+
+.proj-td-name {
+  font-family: var(--f-display); font-weight: 700; font-size: 14px;
+  color: #fff; line-height: 1.3; margin-bottom: 4px;
+}
+.proj-td-scope { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.5; }
+.proj-td-client { font-size: 13px; color: rgba(255,255,255,0.55); }
+.proj-td-year {
+  font-family: var(--f-display); font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.4);
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+}
+.badge-done { background: rgba(74,222,128,0.1); color: #4ADE80; border: 1px solid rgba(74,222,128,0.2); }
+.badge-live { background: rgba(96,165,250,0.1); color: #60A5FA; border: 1px solid rgba(96,165,250,0.2); }
+.badge::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+}
+
+.proj-clients {
+  margin-top: 56px; padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.proj-clients-label {
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); margin-bottom: 24px;
+}
+.proj-clients-list {
+  display: flex; flex-wrap: wrap; gap: 0;
+}
+.proj-client-item {
+  font-family: var(--f-display); font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.28); padding: 8px 24px 8px 0;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  margin-right: 24px; margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.proj-client-item:hover { color: rgba(255,255,255,0.55); }
+.proj-client-item:last-child { border-right: none; }
+
+/* ═══════════════════════════════════════════════════════════════
+   WHY WGS
+═══════════════════════════════════════════════════════════════ */
+#why { background: var(--white); }
+
+.why-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  background: var(--line);
+  margin-top: 56px;
+}
+.why-item {
+  background: var(--white); padding: 36px 28px;
+  position: relative; overflow: hidden;
+  transition: background 0.2s;
+}
+.why-item:hover { background: var(--off); }
+.why-item-accent {
+  width: 28px; height: 3px; background: var(--gold);
+  margin-bottom: 22px;
+  transition: width 0.3s var(--ease);
+}
+.why-item:hover .why-item-accent { width: 44px; }
+.why-item-title {
+  font-family: var(--f-display); font-weight: 800; font-size: 15px;
+  color: var(--navy); line-height: 1.3; margin-bottom: 12px;
+}
+.why-item-text { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+.why-bottom {
+  margin-top: 48px; padding: 32px 36px;
+  background: var(--navy); border-radius: 6px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+}
+.why-bottom-text {
+  font-family: var(--f-display); font-size: clamp(1rem,2vw,1.35rem); font-weight: 700;
+  color: #fff; max-width: 600px; line-height: 1.4;
+}
+.why-bottom-text span { color: var(--gold2); }
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════════════════════ */
+#contact { background: var(--off); }
+
+.contact-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
+
+.contact-info-block { margin-top: 40px; }
+.contact-row {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.contact-row:first-child { border-top: 1px solid var(--line); }
+.contact-row-icon {
+  width: 38px; height: 38px; border-radius: 5px;
+  background: var(--navy); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-row-icon svg { width: 16px; height: 16px; color: var(--gold2); }
+.contact-row-label {
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 4px;
+}
+.contact-row-val { font-size: 14px; color: var(--navy); font-weight: 500; line-height: 1.65; }
+
+/* Form */
+.form-wrap {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 6px; padding: clamp(28px,4vw,48px);
+}
+.form-title {
+  font-family: var(--f-display); font-weight: 800; font-size: 1.15rem;
+  color: var(--navy); margin-bottom: 28px; letter-spacing: -0.02em;
+}
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 14px; }
+.form-label {
+  display: block; font-family: var(--f-display); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 7px;
+}
+.form-control {
+  width: 100%; background: var(--off);
+  border: 1.5px solid var(--line2); border-radius: 5px;
+  color: var(--text); font-family: var(--f-body); font-size: 14px;
+  padding: 11px 14px; outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -webkit-appearance: none; appearance: none;
+}
+.form-control:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(12,26,58,0.08); background: var(--white); }
+.form-control.err { border-color: #EF4444; }
+textarea.form-control { resize: vertical; min-height: 115px; }
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 38px; cursor: pointer;
+}
+select.form-control option { background: white; color: var(--text); }
+
+.btn-submit {
+  width: 100%; padding: 14px; margin-top: 4px;
+  font-family: var(--f-display); font-weight: 700; font-size: 13px; letter-spacing: 0.04em;
+  background: var(--navy); color: #fff; border-radius: 5px;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-submit:hover { background: var(--navy3); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(12,26,58,0.2); }
+.btn-submit svg { width: 14px; height: 14px; }
+.form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 14px; }
+
+/* success state */
+.form-success {
+  display: none; text-align: center; padding: 40px 20px;
+}
+.form-success-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+}
+.form-success-icon svg { width: 26px; height: 26px; color: #22C55E; }
+.form-success h3 { font-family: var(--f-display); font-weight: 800; font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
+.form-success p { font-size: 13.5px; color: var(--muted); }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════ */
+footer {
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+}
+.footer-main {
+  padding: clamp(40px,6vw,72px) 0 48px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand-name {
+  font-family: var(--f-display); font-weight: 800; font-size: 15px;
+  color: #fff; margin-bottom: 12px; letter-spacing: -0.01em;
+}
+.footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.75; max-width: 260px; }
+
+.footer-col-title {
+  font-family: var(--f-display); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); margin-bottom: 18px;
+}
+.footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-col-links a {
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  transition: color 0.15s;
+}
+.footer-col-links a:hover { color: var(--gold2); }
+
+.footer-bottom {
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════════════════ */
+[data-reveal] {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  will-change: opacity, transform;
+}
+[data-reveal].in { opacity: 1; transform: translateY(0); }
+[data-reveal="right"] { transform: translateX(20px); }
+[data-reveal="right"].in { transform: translateX(0); }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-panel { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .why-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-burger { display: flex; }
+  .srv-grid { grid-template-columns: 1fr; }
+  .sec-panel.on { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-2col { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .why-bottom { flex-direction: column; }
+  .proj-table thead { display: none; }
+  .proj-table, .proj-table tbody, .proj-table tr, .proj-table td { display: block; }
+  .proj-table tr { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .proj-table td { padding: 3px 0; border: none; text-align: left !important; }
+  .footer-main { grid-template-columns: 1fr; }
+  .hero-certs { flex-wrap: wrap; gap: 16px; }
+  .hero-cert { border-right: none; padding-right: 0; margin-right: 0; }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 2.2rem; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .srv-tabs { flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="wrap" style="display:flex;align-items:center;width:100%">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div>
+        <div class="nav-logo-text">WGS</div>
+        <div class="nav-logo-sub">West Group Service</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about"    data-en="About"    data-ru="О компании"></a></li>
+      <li><a href="#services" data-en="Services" data-ru="Услуги"></a></li>
+      <li><a href="#projects" data-en="Projects" data-ru="Проекты"></a></li>
+      <li><a href="#why"      data-en="Why WGS"  data-ru="Почему WGS"></a></li>
+      <li><a href="#contact"  data-en="Contact"  data-ru="Контакт"></a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-en" class="on" onclick="setLang('en')">EN</button>
+        <button id="btn-ru" onclick="setLang('ru')">RU</button>
+      </div>
+      <a href="#contact" class="nav-cta" data-en="Get in Touch" data-ru="Связаться"></a>
+    </div>
+
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#about"    onclick="closeMenu()" data-en="About"    data-ru="О компании"></a>
+  <a href="#services" onclick="closeMenu()" data-en="Services" data-ru="Услуги"></a>
+  <a href="#projects" onclick="closeMenu()" data-en="Projects" data-ru="Проекты"></a>
+  <a href="#why"      onclick="closeMenu()" data-en="Why WGS"  data-ru="Почему WGS"></a>
+  <a href="#contact"  onclick="closeMenu()" data-en="Contact"  data-ru="Контакт"></a>
+  <div class="nav-mobile-foot">
+    <a href="#contact" class="btn btn-gold" onclick="closeMenu()" data-en="Get in Touch" data-ru="Связаться"></a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-ruler"></div>
+
+  <div class="hero-body">
+    <div class="wrap">
+      <div class="hero-inner">
+
+        <div data-reveal>
+          <div class="hero-tag">
+            <span class="hero-tag-line"></span>
+            <span data-en="Kazakhstan · Oil & Gas Industry" data-ru="Казахстан · Нефтегазовая отрасль"></span>
+          </div>
+
+          <h1 class="hero-h1">
+            <span data-en="Industrial" data-ru="Промышленные"></span><br>
+            <em data-en="Coating &" data-ru="Покрытия и"></em><br>
+            <span data-en="Insulation" data-ru="Изоляция"></span>
+          </h1>
+
+          <p class="hero-desc"
+            data-en="West Group Service LLP is a specialized company providing industrial thermal insulation, scaffolding, PFP/CFP, surface preparation, coating application and security systems in Kazakhstan's oil & gas sector."
+            data-ru="West Group Service LLP — специализированная компания, предоставляющая услуги по теплоизоляции, лесомонтажу, огнезащите, подготовке поверхностей, нанесению покрытий и системам безопасности в нефтегазовой отрасли Казахстана.">
+          </p>
+
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-gold" data-en="Our Services" data-ru="Наши услуги"></a>
+            <a href="#contact" class="btn btn-outline-white">
+              <span data-en="Get a Quote" data-ru="Запросить расчёт"></span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-certs">
+            <div class="hero-cert">
+              <div class="hero-cert-name">NACE</div>
+              <div class="hero-cert-desc" data-en="Certified inspectors" data-ru="Сертификат инспектора"></div>
+            </div>
+            <div class="hero-cert">
+              <div class="hero-cert-name">BGAS</div>
+              <div class="hero-cert-desc" data-en="Level 1 & 2" data-ru="Уровень 1 и 2"></div>
+            </div>
+            <div class="hero-cert">
+              <div class="hero-cert-name">Chartek</div>
+              <div class="hero-cert-desc" data-en="PFP & CFP certified" data-ru="ПФП и КФП сертификат"></div>
+            </div>
+            <div class="hero-cert">
+              <div class="hero-cert-name">ITP</div>
+              <div class="hero-cert-desc" data-en="Testing plan compliance" data-ru="Соответствие ППИ"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data panel -->
+        <div class="hero-panel" data-reveal="right">
+          <div class="hero-panel-head">
+            <span class="hero-panel-dot"></span>
+            <span data-en="Company Overview" data-ru="О компании"></span>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label" data-en="Certified specialists on staff" data-ru="Сертифицированных специалистов"></div>
+            <div class="hero-stat-val" id="s1">50<sup>+</sup></div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label" data-en="Mobilization capacity (short notice)" data-ru="Ресурс мобилизации"></div>
+            <div class="hero-stat-val" id="s2">150<sup>+</sup></div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label" data-en="Projects completed across KZ & Russia" data-ru="Завершённых проектов"></div>
+            <div class="hero-stat-val" id="s3">5</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label" data-en="Active project (valve maintenance)" data-ru="Активный проект"></div>
+            <div class="hero-stat-val" style="font-size:1.1rem;" data-en="Ongoing" data-ru="В работе"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════════════════════ -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div data-reveal>
+        <div class="sec-eyebrow" data-en="About the Company" data-ru="О компании"></div>
+        <h2 class="sec-title" data-en="Who We Are" data-ru="Кто мы"></h2>
+        <div class="about-divider"></div>
+
+        <div class="about-body">
+          <p data-en="WGS is a young and rapidly developing company in Kazakhstan specializing in coating application and thermal insulation installation on the surface of pipes, vessels, tanks and equipment — both hot and cold — with access provided by scaffolding materials." data-ru="WGS — молодая и быстро развивающаяся компания в Казахстане, специализирующаяся на нанесении покрытий и монтаже теплоизоляции на поверхности труб, сосудов, резервуаров и оборудования — как горячих, так и холодных — с обеспечением доступа с помощью строительных лесов."></p>
+          <p data-en="The company has the knowledge, capabilities and experience to provide comprehensive PFP coating solutions for the most complex and demanding projects. We perform anti-corrosion treatment of tanks, pipes and metal structures, and provide qualified certified specialists with calibrated equipment." data-ru="Компания обладает знаниями, возможностями и опытом для комплексного нанесения покрытий ПФП в самых сложных проектах. Выполняем антикоррозионную обработку резервуаров, труб и металлоконструкций, предоставляем квалифицированных специалистов с оборудованием."></p>
+        </div>
+
+        <div class="about-pillars" style="margin-top:32px">
+          <div class="pillar">
+            <div class="pillar-num" data-en="QC" data-ru="КК"></div>
+            <div>
+              <div class="pillar-title" data-en="Certified Quality Control" data-ru="Сертифицированный контроль качества"></div>
+              <div class="pillar-text" data-en="NACE and BGAS Level 1&2 certified inspectors. Measurement tests at each stage of work per ITP." data-ru="Инспекторы с сертификатами NACE и BGAS уровней 1 и 2. Измерительные испытания на каждом этапе по ППИ."></div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num" data-en="50+" data-ru="50+"></div>
+            <div>
+              <div class="pillar-title" data-en="Qualified Specialists" data-ru="Квалифицированные специалисты"></div>
+              <div class="pillar-text" data-en="Fitters, welders, E&I technicians, scaffolders, blasters, spray painters — with calibrated equipment and required materials." data-ru="Слесари, сварщики, электромонтажники, лесомонтажники, пескоструйщики, маляры-спрейщики — с калиброванным оборудованием."></div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num" data-en="Fast" data-ru="Быстро"></div>
+            <div>
+              <div class="pillar-title" data-en="Rapid Mobilization" data-ru="Быстрая мобилизация"></div>
+              <div class="pillar-text" data-en="Ready to mobilize an additional 100–150 specialists in a short period when the project demands it." data-ru="Готовы в короткие сроки мобилизовать дополнительно 100–150 специалистов при необходимости."></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="right">
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-badge">NACE</div>
+            <div class="cert-text" data-en="National Association of Corrosion Engineers — internationally recognised coating inspector certification." data-ru="Международная сертификация инспекторов по коррозионной защите."></div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-badge">BGAS</div>
+            <div class="cert-text" data-en="British Gas coating certification, Level 1 & 2. Qualified inspectors on every project." data-ru="Британский газовый сертификат, уровни 1 и 2. На каждом проекте."></div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-badge">Chartek</div>
+            <div class="cert-text" data-en="PFP & CFP application certification for passive and cryogenic fire protection coatings." data-ru="Сертификация нанесения ПФП и криогенной огнезащиты Chartek."></div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-badge">ITP</div>
+            <div class="cert-text" data-en="Full compliance with Inspection and Testing Plans — measurement tests at each stage of work." data-ru="Полное соответствие Планам проверки и испытаний — контроль на каждом этапе."></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════════════════════ -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="srv-header" data-reveal>
+      <div>
+        <div class="sec-eyebrow" data-en="What We Do" data-ru="Что мы делаем"></div>
+        <h2 class="sec-title" data-en="Our Services" data-ru="Наши услуги"></h2>
+        <p class="sec-lead" data-en="From surface preparation and PFP to turn-key security systems — comprehensive solutions for demanding industrial environments." data-ru="От подготовки поверхностей и ПФП до систем безопасности под ключ — комплексные решения для промышленных объектов."></p>
+      </div>
+      <div class="srv-tabs">
+        <button class="srv-tab on" onclick="switchTab('ind',this)" data-en="Industrial" data-ru="Промышленные"></button>
+        <button class="srv-tab" onclick="switchTab('sec',this)" data-en="Security Systems" data-ru="Безопасность"></button>
+      </div>
+    </div>
+
+    <!-- Industrial -->
+    <div id="tab-ind" data-reveal>
+      <div class="srv-grid">
+
+        <div class="srv-card">
+          <div class="srv-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div>
+          <div class="srv-name" data-en="Surface Preparation & Coating Application" data-ru="Подготовка поверхности и нанесение покрытий"></div>
+          <div class="srv-desc" data-en="Internal and external coating application on pipes, vessels, tanks and metal structures. Customized solutions meeting required performance standards in any environment." data-ru="Нанесение внутренних и наружных покрытий на трубы, сосуды, резервуары и металлоконструкции. Индивидуальные решения для любых условий."></div>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+          <div class="srv-name" data-en="Industrial Thermal Insulation & Pipe Wrapping" data-ru="Промышленная теплоизоляция и обмотка труб"></div>
+          <div class="srv-desc" data-en="Universal approach to thermal insulation installation and pipe wrapping — cold & hot — with different types and designs. All major insulation systems." data-ru="Монтаж теплоизоляции и обмотка труб — горячих и холодных — различных типов и конструкций."></div>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg></div>
+          <div class="srv-name" data-en="PFP & CFP — Passive & Cryogenic Fire Protection" data-ru="ПФП и КФП — Пассивная и Криогенная Огнезащита"></div>
+          <div class="srv-desc" data-en="PFP and Cryogenic coating application on steel structures, equipment skirts and supports. Chartek certified. Full compliance with Client specifications." data-ru="Нанесение ПФП и криогенных покрытий на стальные конструкции, юбки и опоры оборудования. Сертификат Chartek."></div>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="srv-name" data-en="Scaffold & Access" data-ru="Лесомонтаж и доступ"></div>
+          <div class="srv-desc" data-en="Scaffolding and rope lift services for the oil and gas industry. Certified scaffolders providing safe, efficient access at any height or structural complexity." data-ru="Монтаж строительных лесов и канатных подъёмников для нефтегаза. Безопасный доступ на любой высоте и сложности конструкции."></div>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div class="srv-name" data-en="Quality Control & Testing" data-ru="Контроль качества и испытания"></div>
+          <div class="srv-desc" data-en="NACE and BGAS L1&2 certified QC inspectors. Measurement tests at each stage of work in strict accordance with the ITP (Inspection and Testing Plan)." data-ru="Инспекторы КК с сертификатами NACE и BGAS уровней 1 и 2. Измерительные испытания на каждом этапе согласно ППИ."></div>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <div class="srv-name" data-en="Certified Specialists Supply" data-ru="Предоставление специалистов"></div>
+          <div class="srv-desc" data-en="Fitters, welders, E&I technicians, scaffolders, blasters, spray painters, helpers — with calibrated equipment and all required materials included." data-ru="Слесари, сварщики, электромонтажники, лесомонтажники, пескоструйщики, маляры — с оборудованием и материалами."></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Security -->
+    <div id="tab-sec" class="sec-panel">
+      <div class="sec-card">
+        <div class="sec-card-top">
+          <div class="sec-card-icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
+          <div>
+            <div class="sec-card-title" data-en="CCTV & Video Surveillance" data-ru="Видеонаблюдение и CCTV"></div>
+            <div class="sec-card-sub" data-en="Turn-Key Security Systems" data-ru="Системы безопасности под ключ"></div>
+          </div>
+        </div>
+        <div class="sec-card-body">
+          <ul class="sec-list">
+            <li data-en="Installation & maintenance of IP cameras" data-ru="Установка и обслуживание IP камер"></li>
+            <li data-en="Indoor and outdoor surveillance" data-ru="Внутреннее и наружное видеонаблюдение"></li>
+            <li data-en="Night vision and 24/7 continuous recording" data-ru="Ночное наблюдение и запись 24/7"></li>
+            <li data-en="Remote access connection via smartphone" data-ru="Подключение удалённого доступа через телефон"></li>
+            <li data-en="NVR (Network Video Recorder) installation" data-ru="Монтаж видеорегистраторов (NVR)"></li>
+            <li data-en="Archive setup and data storage configuration" data-ru="Настройка архива и хранения данных"></li>
+            <li data-en="PTZ pan-tilt-zoom camera installation" data-ru="Установка PTZ-поворотных камер"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec-card">
+        <div class="sec-card-top">
+          <div class="sec-card-icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></div>
+          <div>
+            <div class="sec-card-title" data-en="Fire Alarm Systems" data-ru="Пожарная сигнализация"></div>
+            <div class="sec-card-sub" data-en="Turn-Key Security Systems" data-ru="Системы безопасности под ключ"></div>
+          </div>
+        </div>
+        <div class="sec-card-body">
+          <ul class="sec-list">
+            <li data-en="Fire alarm system installation" data-ru="Монтаж пожарной сигнализации"></li>
+            <li data-en="Smoke and heat detector installation" data-ru="Установка дымовых и тепловых датчиков"></li>
+            <li data-en="Siren and notification system connection" data-ru="Подключение сирен и систем оповещения"></li>
+            <li data-en="Emergency exit sign installation" data-ru="Установка табло «Выход»"></li>
+            <li data-en="Commissioning and start-up works" data-ru="Пуско-наладочные работы"></li>
+            <li data-en="System verification and diagnostics" data-ru="Проверка и диагностика систем"></li>
+            <li data-en="Scheduled technical maintenance" data-ru="Техническое обслуживание"></li>
+            <li data-en="Integration with existing security systems" data-ru="Интеграция с системами безопасности"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec-card">
+        <div class="sec-card-top">
+          <div class="sec-card-icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+          <div>
+            <div class="sec-card-title" data-en="Additional Security Services" data-ru="Дополнительные услуги"></div>
+            <div class="sec-card-sub" data-en="Turn-Key Security Systems" data-ru="Системы безопасности под ключ"></div>
+          </div>
+        </div>
+        <div class="sec-card-body">
+          <ul class="sec-list">
+            <li data-en="ACS — Access Control Systems (СКУД)" data-ru="СКУД — Контроль доступа"></li>
+            <li data-en="Video intercoms and intercom systems" data-ru="Видеодомофоны и домофония"></li>
+            <li data-en="Low-voltage networks & structured cabling (SCS)" data-ru="Слаботочные сети и СКС"></li>
+            <li data-en="Electrical installation works" data-ru="Электромонтажные работы"></li>
+            <li data-en="Cable laying and routing" data-ru="Прокладка кабельных линий"></li>
+            <li data-en="Upgrade and modernisation of existing systems" data-ru="Модернизация действующих систем"></li>
+            <li data-en="Facility service & maintenance contracts" data-ru="Сервисное обслуживание объектов"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PROJECTS
+═══════════════════════════════════════════════════════════════ -->
+<section id="projects" class="sec">
+  <div class="wrap">
+    <div class="proj-header-row" data-reveal>
+      <div>
+        <div class="sec-eyebrow" data-en="Track Record" data-ru="Портфолио"></div>
+        <h2 class="sec-title" data-en="Our Projects" data-ru="Наши проекты"></h2>
+        <p class="sec-lead" data-en="Projects delivered across Kazakhstan and Russia, working with major international oil & gas operators and EPC contractors." data-ru="Проекты в Казахстане и России с крупнейшими международными операторами нефтегаза и EPC-подрядчиками."></p>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <table class="proj-table">
+        <thead>
+          <tr>
+            <th data-en="Project" data-ru="Проект"></th>
+            <th data-en="Client" data-ru="Клиент"></th>
+            <th data-en="Scope" data-ru="Работы"></th>
+            <th data-en="Year" data-ru="Год"></th>
+            <th data-en="Status" data-ru="Статус"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="proj-td-name" data-en="WGS Russia LNG — Kaliningrad" data-ru="WGS LNG Проект — Калининград, Россия"></div>
+            </td>
+            <td><div class="proj-td-client">SAREN (Saipem &amp; Renaissance)</div></td>
+            <td><div class="proj-td-scope" data-en="Surface preparation, coating, PFP & CFP applications" data-ru="Подготовка поверхности, покраска, нанесение ПФП и КФП"></div></td>
+            <td><div class="proj-td-year">2021</div></td>
+            <td><span class="badge badge-done" data-en="Completed" data-ru="Завершён"></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="proj-td-name">TCO FGP ERSAI</div>
+            </td>
+            <td><div class="proj-td-client">Ersai (Saipem)</div></td>
+            <td><div class="proj-td-scope" data-en="Scaffolding, insulation, surface preparation & coating" data-ru="Лесомонтаж, изоляция, абразивная очистка и покрытие"></div></td>
+            <td><div class="proj-td-year">2020–2021</div></td>
+            <td><span class="badge badge-done" data-en="Completed" data-ru="Завершён"></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="proj-td-name">TCO FGP 3GI Tanks</div>
+            </td>
+            <td><div class="proj-td-client">CB&amp;I</div></td>
+            <td><div class="proj-td-scope" data-en="Scaffolding, insulation, surface preparation & coating" data-ru="Лесомонтаж, изоляция, абразивная очистка и покрытие"></div></td>
+            <td><div class="proj-td-year">2019–2020</div></td>
+            <td><span class="badge badge-done" data-en="Completed" data-ru="Завершён"></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="proj-td-name" data-en="WGS Shutdown — Karabatan" data-ru="WGS Капремонт — Каработан"></div>
+            </td>
+            <td><div class="proj-td-client">NCOC / KCOI (via NSG)</div></td>
+            <td><div class="proj-td-scope" data-en="Repair and paint work" data-ru="Ремонтно-покрасочные работы"></div></td>
+            <td><div class="proj-td-year">2022</div></td>
+            <td><span class="badge badge-done" data-en="Completed" data-ru="Завершён"></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="proj-td-name" data-en="Bauenfield Plant Modification" data-ru="Модификация завода Баунфилд"></div>
+            </td>
+            <td><div class="proj-td-client">NCOC / Istek (via NSG)</div></td>
+            <td><div class="proj-td-scope" data-en="Repair and paint work — Karabatan" data-ru="Ремонтно-покрасочные работы — Каработан"></div></td>
+            <td><div class="proj-td-year">2022</div></td>
+            <td><span class="badge badge-done" data-en="Completed" data-ru="Завершён"></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="proj-td-name" data-en="Valve Maintenance — Aksai / Atyrau" data-ru="Техобслуживание клапанов — Аксай / Атырау"></div>
+            </td>
+            <td><div class="proj-td-client">KIOS / KTF / AMPO Kazakhstan (NCOC / KPO)</div></td>
+            <td><div class="proj-td-scope" data-en="Surface preparation & coating on valves of various diameters" data-ru="Подготовка поверхности и нанесение покрытия на клапаны различных диаметров"></div></td>
+            <td><div class="proj-td-year">2026–2027</div></td>
+            <td><span class="badge badge-live" data-en="In Progress" data-ru="В процессе"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="proj-clients" data-reveal>
+      <div class="proj-clients-label" data-en="Clients & Partners" data-ru="Клиенты и партнёры"></div>
+      <div class="proj-clients-list">
+        <div class="proj-client-item">Saipem</div>
+        <div class="proj-client-item">Renaissance</div>
+        <div class="proj-client-item">CB&amp;I</div>
+        <div class="proj-client-item">NCOC</div>
+        <div class="proj-client-item">KPO</div>
+        <div class="proj-client-item">Ersai</div>
+        <div class="proj-client-item">AMPO Kazakhstan</div>
+        <div class="proj-client-item">NSG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     WHY WGS
+═══════════════════════════════════════════════════════════════ -->
+<section id="why" class="sec">
+  <div class="wrap">
+    <div data-reveal>
+      <div class="sec-eyebrow" data-en="Why Choose WGS" data-ru="Почему WGS"></div>
+      <h2 class="sec-title" data-en="What Sets Us Apart" data-ru="Наши преимущества"></h2>
+    </div>
+
+    <div class="why-grid" data-reveal>
+      <div class="why-item">
+        <div class="why-item-accent"></div>
+        <div class="why-item-title" data-en="50+ Certified Specialists" data-ru="50+ сертифицированных специалистов"></div>
+        <div class="why-item-text" data-en="More than 50 qualified specialists in protective coatings and surface preparation holding Chartek PFP & CFP certificates." data-ru="Более 50 квалифицированных специалистов по защитным покрытиям с сертификатами Chartek ПФП и КФП."></div>
+      </div>
+      <div class="why-item">
+        <div class="why-item-accent"></div>
+        <div class="why-item-title" data-en="Rapid Mobilization" data-ru="Быстрая мобилизация"></div>
+        <div class="why-item-text" data-en="Ready to mobilize an additional 100–150 specialists in a short period. Large-volume coating work with complex specifications is not a problem." data-ru="Готовы в короткие сроки мобилизовать 100–150 дополнительных специалистов. Большие объёмы со сложными спецификациями — без проблем."></div>
+      </div>
+      <div class="why-item">
+        <div class="why-item-accent"></div>
+        <div class="why-item-title" data-en="Modern Equipment & QC" data-ru="Современное оборудование и КК"></div>
+        <div class="why-item-text" data-en="Complete sets of calibrated measuring instruments for quality control at every stage. NACE and BGAS certified inspectors on all projects." data-ru="Полный набор калиброванных измерительных инструментов. Инспекторы NACE и BGAS на всех проектах."></div>
+      </div>
+      <div class="why-item">
+        <div class="why-item-accent"></div>
+        <div class="why-item-title" data-en="Turn-Key Solutions" data-ru="Решения под ключ"></div>
+        <div class="why-item-text" data-en="From surface preparation and coating to insulation, scaffolding and security systems — a single contractor for the full scope of work." data-ru="От подготовки поверхности и покрытий до изоляции, лесомонтажа и систем безопасности — один подрядчик для всего объёма."></div>
+      </div>
+    </div>
+
+    <div class="why-bottom" data-reveal>
+      <div class="why-bottom-text" data-en='The company is ready to perform <span>large volumes of coating</span> with complex specifications as per Client requirements.' data-ru='Компания готова выполнять <span>большие объёмы работ</span> по нанесению покрытий со сложными техническими характеристиками согласно спецификациям Клиента.'></div>
+      <a href="#contact" class="btn btn-gold" data-en="Request a Proposal" data-ru="Запросить предложение"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════════════════════ -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div data-reveal>
+        <div class="sec-eyebrow" data-en="Get In Touch" data-ru="Свяжитесь с нами"></div>
+        <h2 class="sec-title" data-en="Contact Us" data-ru="Контакты"></h2>
+        <p class="sec-lead" data-en="Ready to discuss your project. Send us a message and we will respond within 24 hours." data-ru="Готовы обсудить ваш проект. Напишите нам — ответим в течение 24 часов."></p>
+
+        <div class="contact-info-block">
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div>
+              <div class="contact-row-label" data-en="Address" data-ru="Адрес"></div>
+              <div class="contact-row-val">Ave. Tauelsizdik 34, 020000<br>Nur-Sultan, Kazakhstan</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+            <div>
+              <div class="contact-row-label" data-en="Phone" data-ru="Телефон"></div>
+              <div class="contact-row-val">+7 (702) 811-45-43<br>+7 (701) 714-14-78</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+            <div>
+              <div class="contact-row-label">Email</div>
+              <div class="contact-row-val">info@wgs.kz</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="right">
+        <div class="form-wrap">
+          <div id="form-inner">
+            <div class="form-title" data-en="Send a Message" data-ru="Отправить сообщение"></div>
+            <div class="form-2col">
+              <div class="form-group">
+                <label class="form-label" data-en="Your Name" data-ru="Ваше имя"></label>
+                <input type="text" id="f-name" class="form-control" placeholder="John Smith">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-en="Company" data-ru="Компания"></label>
+                <input type="text" id="f-company" class="form-control" placeholder="NCOC Ltd.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="f-email" class="form-control" placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-en="Service of Interest" data-ru="Интересующая услуга"></label>
+              <select id="f-service" class="form-control">
+                <option value="" data-en="— Select —" data-ru="— Выберите —"></option>
+                <option data-en="Surface Preparation & Coating" data-ru="Подготовка поверхности и покрытие"></option>
+                <option data-en="Thermal Insulation & Pipe Wrapping" data-ru="Теплоизоляция и обмотка труб"></option>
+                <option data-en="PFP & CFP Applications" data-ru="ПФП и КФП"></option>
+                <option data-en="Scaffold & Access" data-ru="Лесомонтаж и доступ"></option>
+                <option data-en="Quality Control & Testing" data-ru="Контроль качества"></option>
+                <option data-en="CCTV & Video Surveillance" data-ru="Видеонаблюдение CCTV"></option>
+                <option data-en="Fire Alarm Systems" data-ru="Пожарная сигнализация"></option>
+                <option data-en="Other Security Services" data-ru="Другие услуги безопасности"></option>
+                <option data-en="Other" data-ru="Другое"></option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-en="Message" data-ru="Сообщение"></label>
+              <textarea id="f-msg" class="form-control" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button class="btn-submit" onclick="submitForm()">
+              <span data-en="Send Message" data-ru="Отправить сообщение"></span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+            <div class="form-note" data-en="We typically respond within 24 hours." data-ru="Обычно отвечаем в течение 24 часов."></div>
+          </div>
+          <div class="form-success" id="form-success">
+            <div class="form-success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 data-en="Message Sent!" data-ru="Сообщение отправлено!"></h3>
+            <p data-en="Thank you. We'll be in touch within 24 hours." data-ru="Спасибо. Мы свяжемся с вами в течение 24 часов."></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-main">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div class="nav-logo-mark" style="width:32px;height:32px;border-radius:5px;padding:7px">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="footer-brand-name">West Group Service LLP</div>
+        </div>
+        <div class="footer-brand-desc" data-en="Specialized industrial coating, insulation and security systems company in Kazakhstan. Serving the oil & gas sector since founding." data-ru="Специализированная компания в Казахстане по промышленным покрытиям, изоляции и системам безопасности. Обслуживаем нефтегазовый сектор."></div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Services" data-ru="Услуги"></div>
+        <div class="footer-col-links">
+          <a href="#services" data-en="Surface Preparation & Coating" data-ru="Подготовка поверхности"></a>
+          <a href="#services" data-en="Thermal Insulation" data-ru="Теплоизоляция"></a>
+          <a href="#services" data-en="PFP & CFP" data-ru="ПФП и КФП"></a>
+          <a href="#services" data-en="Scaffold & Access" data-ru="Лесомонтаж"></a>
+          <a href="#services" data-en="Security Systems" data-ru="Системы безопасности"></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Company" data-ru="Компания"></div>
+        <div class="footer-col-links">
+          <a href="#about" data-en="About WGS" data-ru="О компании"></a>
+          <a href="#projects" data-en="Projects" data-ru="Проекты"></a>
+          <a href="#why" data-en="Why WGS" data-ru="Почему WGS"></a>
+          <a href="#contact" data-en="Contact" data-ru="Контакт"></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Contact" data-ru="Контакт"></div>
+        <div class="footer-col-links">
+          <a href="tel:+77028114543">+7 (702) 811-45-43</a>
+          <a href="tel:+77017141478">+7 (701) 714-14-78</a>
+          <a href="mailto:info@wgs.kz">info@wgs.kz</a>
+          <a href="#contact" style="color:rgba(255,255,255,0.25);font-size:11px;margin-top:4px">Nur-Sultan, Kazakhstan</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-en="© 2026 West Group Service LLP. All rights reserved." data-ru="© 2026 West Group Service LLP. Все права защищены."></div>
+      <div class="footer-copy" data-en="Kazakhstan · Oil & Gas Specialists" data-ru="Казахстан · Специалисты нефтегазового сектора"></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script>
+/* ── Language ──────────────────────────────────────────── */
+let curLang = 'en';
+
+function setLang(lang) {
+  curLang = lang;
+  document.getElementById('btn-en').className = lang === 'en' ? 'on' : '';
+  document.getElementById('btn-ru').className = lang === 'ru' ? 'on' : '';
+
+  // Each element carries both data-en and data-ru — just set the right content
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val === null) return;
+    const tag = el.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') {
+      el.placeholder = val;
+    } else if (tag === 'OPTION') {
+      el.textContent = val;
+    } else {
+      el.innerHTML = val;
+    }
+  });
+
+  const ta = document.getElementById('f-msg');
+  if (ta) ta.placeholder = lang === 'en' ? 'Tell us about your project...' : 'Расскажите о вашем проекте...';
+}
+
+/* ── Nav scroll ────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('solid', window.scrollY > 30);
+}, { passive: true });
+
+/* ── Mobile menu ───────────────────────────────────────── */
+function toggleMenu() {
+  const burger = document.getElementById('burger');
+  const menu   = document.getElementById('nav-mobile');
+  const open   = burger.classList.toggle('open');
+  menu.style.display = open ? 'flex' : 'none';
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('nav-mobile').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+/* ── Service tabs ──────────────────────────────────────── */
+function switchTab(name, btn) {
+  // toggle tab buttons
+  document.querySelectorAll('.srv-tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+
+  // show/hide panels
+  document.getElementById('tab-ind').style.display = name === 'ind' ? 'block' : 'none';
+  const sec = document.getElementById('tab-sec');
+  sec.className = name === 'sec' ? 'sec-panel on' : 'sec-panel';
+}
+
+/* ── Scroll reveal ─────────────────────────────────────── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05 });
+
+document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+  el.style.transitionDelay = (i % 3) * 0.08 + 's';
+  revealObs.observe(el);
+  // If already in viewport (e.g. hero), reveal immediately
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight && r.bottom > 0) {
+    setTimeout(() => el.classList.add('in'), 100 + i * 60);
+  }
+});
+
+/* ── Counter animation ─────────────────────────────────── */
+function animateCounter(el, target, suffix) {
+  let v = 0;
+  const step = () => {
+    v = Math.min(v + Math.ceil(target / 40), target);
+    el.innerHTML = v + '<sup>' + suffix + '</sup>';
+    if (v < target) requestAnimationFrame(step);
+  };
+  step();
+}
+
+// Trigger counters when hero stat panel enters view
+const heroObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    setTimeout(() => {
+      animateCounter(document.getElementById('s1'), 50, '+');
+      animateCounter(document.getElementById('s2'), 150, '+');
+    }, 300);
+    heroObs.disconnect();
+  }
+}, { threshold: 0.3 });
+const s1el = document.getElementById('s1');
+if (s1el) heroObs.observe(s1el.closest('.hero-panel') || document.getElementById('hero'));
+
+/* ── Form ──────────────────────────────────────────────── */
+function submitForm() {
+  let valid = true;
+  ['f-name', 'f-email'].forEach(id => {
+    const el = document.getElementById(id);
+    const ok = el.value.trim().length > 0;
+    el.classList.toggle('err', !ok);
+    if (!ok) valid = false;
+  });
+  if (!valid) return;
+
+  document.getElementById('form-inner').style.display = 'none';
+  const s = document.getElementById('form-success');
+  s.style.display = 'block';
+  setLang(curLang); // refresh text in success state
+}
+
+/* ── Init ──────────────────────────────────────────────── */
+// Run immediately — don't wait for DOMContentLoaded
+setLang('en');
+</script>
+</body>
+</html>
